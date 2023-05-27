@@ -1,0 +1,9 @@
+rootProject.name = 'FoodRecipes'
+include 'auth-service'
+include 'auth-service'
+include 'userprofile-service'
+include 'mail-service'
+include 'recipe-service'
+include 'comment-service'
+include 'config-server'
+
