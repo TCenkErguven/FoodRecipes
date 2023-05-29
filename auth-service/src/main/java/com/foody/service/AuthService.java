@@ -68,7 +68,6 @@ public class AuthService extends ServiceManager<Auth, Long> {
     }
 
     public Boolean activateStatus(String token){
-        System.out.println(token);
         Optional<Long> authId = jwtTokenProvider.getIdFromToken(token);
         if(authId.isEmpty())
             throw new AuthManagerException(ErrorType.INVALID_TOKEN);
