@@ -319,7 +319,14 @@ public class RecipeService extends ServiceManager<Recipe,String> {
         }
         return findAll();
     }
-
+    @Caching(
+            evict = {
+                    @CacheEvict(value = "find-all-with-cache", allEntries = true),
+                    @CacheEvict(value = "order-recipes-with-calories", allEntries = true),
+                    @CacheEvict(value = "order-recipes-with-food-name", allEntries = true),
+                    @CacheEvict(value = "search-filter-with-categories", allEntries = true)
+            }
+    )
     public Boolean deleteCategoryById(String token, String categoryId){
         if(jwtTokenProvider.getRoleFromToken(token).get().equals(String.valueOf(ERole.ADMIN))){
             Optional<Category> optionalCategory = categoryService.findById(categoryId);
