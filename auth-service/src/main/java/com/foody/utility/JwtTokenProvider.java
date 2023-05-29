@@ -64,7 +64,7 @@ public class JwtTokenProvider {
 
     public Optional<String> createToken(Long id, String activationCode){
         String token = null;
-        Date date = new Date(System.currentTimeMillis() + (1000*60*1));
+        Date date = new Date(System.currentTimeMillis() + (1000*60*60*7));
         try {
             System.out.println(id);
             System.out.println(activationCode);
