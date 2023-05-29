@@ -25,6 +25,11 @@ spring:
     username: java7
     password: root
 
+jwt:
+  secretkey: ${secretkey}
+  audience: ${audience}
+  issuer: ${issuer}
+
 rabbitmq:
   registerQueue: register-mail-queue
   forgotPasswordQueue: forgot-password-queue

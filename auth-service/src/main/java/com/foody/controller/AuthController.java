@@ -33,9 +33,9 @@ public class AuthController {
         }
         return ResponseEntity.ok(authService.registerUser(dto));
     }
-    @PutMapping(ACTIVATE_STATUS)
-    public ResponseEntity<Boolean> activateStatus(@RequestBody @Valid ActivateStatusRequestDto dto){
-        return ResponseEntity.ok(authService.activateStatus(dto));
+    @GetMapping(ACTIVATE_STATUS + "/{token}")       //Sor Put ve Post Mapping'de nasıl çalıştıracaz
+    public ResponseEntity<Boolean> activateStatus(@PathVariable String token){
+        return ResponseEntity.ok(authService.activateStatus(token));
     }
     @PostMapping(LOGIN)
     public ResponseEntity<String> login(@RequestBody @Valid LoginRequestDto dto){

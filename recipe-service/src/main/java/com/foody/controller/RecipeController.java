@@ -103,6 +103,11 @@ public class RecipeController {
         return ResponseEntity.ok(recipeService.findAllWithCache());
     }
 
+    @DeleteMapping(DELETE_BY_ID + "/{token}" + "/{categoryId}")
+    public ResponseEntity<Boolean> deleteCategoryById(@PathVariable String token, @PathVariable String categoryId){
+        return ResponseEntity.ok(recipeService.deleteCategoryById(token,categoryId));
+    }
+
 
     @GetMapping(FIND_ALL)
     public ResponseEntity<List<Recipe>> findAll(){

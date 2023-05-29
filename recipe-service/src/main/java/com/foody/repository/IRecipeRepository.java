@@ -11,4 +11,5 @@ public interface IRecipeRepository extends MongoRepository<Recipe,String> {
     List<Recipe> findByFoodNameNotContainsIgnoreCase(String foodName);
 
     List<Recipe> findByFoodNameStartingWithIgnoreCase(String foodName);
+
 }

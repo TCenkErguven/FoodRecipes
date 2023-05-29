@@ -147,10 +147,6 @@
 
 ![Category Update](Swagger-Screenshot/Recipe/Category/Category_Update.png)
 
-### CATEGORY_DELETE
-> api/v1/category/delete/{token}
-
-![Category Delete](Swagger-Screenshot/Recipe/Category/Category_Delete.png)
 
 ### CATEGORY_FIND-ALL
 > api/v1/category/find-all
@@ -205,6 +201,11 @@
 > api/v1/recipe/delete-recipe/{token}/{recipeId}
 
 ![Recipe_Delete](Swagger-Screenshot/Recipe/Recipe/Recipe_Delete.png)
+
+### CATEGORY_DELETE
+> api/v1/category/delete/{token}
+
+![Category Delete](Swagger-Screenshot/Recipe/Recipe/Category_Delete.png)
 
 # <u>COMMENT SERVICE</u>
 

@@ -320,5 +320,26 @@ public class RecipeService extends ServiceManager<Recipe,String> {
         return findAll();
     }
 
+    public Boolean deleteCategoryById(String token, String categoryId){
+        if(jwtTokenProvider.getRoleFromToken(token).get().equals(String.valueOf(ERole.ADMIN))){
+            Optional<Category> optionalCategory = categoryService.findById(categoryId);
+            if(optionalCategory.isPresent()){
+                List<Recipe> optionalRecipe = findAll();
+                optionalRecipe.forEach(recipe -> {
+                    if(recipe.getCategoryIds().size()==1 && recipe.getCategoryIds().get(0).equals(categoryId)){
+                        throw new RuntimeException("CATEGORY ERROR");
+                    }
+                });
+                optionalRecipe.forEach(recipe -> {
+                    recipe.getCategoryIds().remove(categoryId);
+                    update(recipe);
+                });
+                deleteById(categoryId);
+                return true;
+            }
+            throw new RecipeAndCategoryManagerException(ErrorType.CATEGORY_NOT_FOUND);
+        }
+        throw new RecipeAndCategoryManagerException(ErrorType.INVALID_TOKEN);
+    }
 
 }

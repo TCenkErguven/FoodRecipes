@@ -40,18 +40,6 @@ public class CategoryService extends ServiceManager<Category,String> {
         throw new RecipeAndCategoryManagerException(ErrorType.INVALID_TOKEN);
     }
 
-    public Boolean deleteCategoryById(String token, String categoryId){
-        if(jwtTokenProvider.getRoleFromToken(token).get().equals(String.valueOf(ERole.ADMIN))){
-            Optional<Category> optionalCategory = findById(categoryId);
-            if(optionalCategory.isPresent()){
-                deleteById(categoryId);
-                return true;
-            }
-            throw new RecipeAndCategoryManagerException(ErrorType.CATEGORY_NOT_FOUND);
-        }
-        throw new RecipeAndCategoryManagerException(ErrorType.INVALID_TOKEN);
-    }
-
     public UpdateCategoryResponseDto updateCategory(String token, UpdateCategoryRequestDto dto){
         if(jwtTokenProvider.getRoleFromToken(token).get().equals(String.valueOf(ERole.ADMIN))){
             Optional<Category> optionalCategory = findById(dto.getId());

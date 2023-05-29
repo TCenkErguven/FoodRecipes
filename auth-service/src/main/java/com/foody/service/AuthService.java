@@ -67,16 +67,24 @@ public class AuthService extends ServiceManager<Auth, Long> {
         return IAuthMapper.INSTANCE.fromAuthToRegisterResponseDto(auth);
     }
 
-    public Boolean activateStatus(ActivateStatusRequestDto dto){
-        Optional<Auth> optionalAuth = findById(dto.getId());
+    public Boolean activateStatus(String token){
+        System.out.println(token);
+        Optional<Long> authId = jwtTokenProvider.getIdFromToken(token);
+        if(authId.isEmpty())
+            throw new AuthManagerException(ErrorType.INVALID_TOKEN);
+        Optional<String> optionalActivationCode = jwtTokenProvider.getActivationCodeFromToken(token);
+        if(authId.isEmpty())
+            throw new AuthManagerException(ErrorType.INVALID_TOKEN);
+        Optional<Auth> optionalAuth = findById(authId.get());
         if(optionalAuth.isEmpty()){
             throw new AuthManagerException(ErrorType.USER_NOT_FOUND);
-        }else if(optionalAuth.get().getActivationCode().equals(dto.getActivationCode())){
+        }else if(optionalAuth.get().getActivationCode().equals(optionalActivationCode.get())){
             optionalAuth.get().setStatus(EStatus.ACTIVE);
             update(optionalAuth.get());
-            userManager.activateStatusUserProfile(dto.getId());
+            userManager.activateStatusUserProfile(authId.get());
             return true;
         }
+        deleteById(authId.get());
         throw new AuthManagerException(ErrorType.ACTIVATE_CODE_ERROR);
     }
 

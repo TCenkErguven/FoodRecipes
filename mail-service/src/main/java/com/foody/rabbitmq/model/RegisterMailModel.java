@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class RegisterMailModel implements Serializable {
+    private Long id;
     private String username;
     private String email;
     private String activationCode;

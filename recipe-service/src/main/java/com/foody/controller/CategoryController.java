@@ -30,10 +30,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.updateCategory(token,dto));
     }
 
-    @DeleteMapping(DELETE_BY_ID + "/{token}" + "/{categoryId}")
-    public ResponseEntity<Boolean> deleteCategoryById(@PathVariable String token, @PathVariable String categoryId){
-        return ResponseEntity.ok(categoryService.deleteCategoryById(token,categoryId));
-    }
+
 
     @GetMapping(FIND_ALL)
     public ResponseEntity<List<Category>> findAll(){
