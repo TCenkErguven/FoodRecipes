@@ -6,7 +6,7 @@
   This is a backend application, used for the publishment of unique food Recipes. 
   Users have to use register the system after that they'll get an activation code which enables them to activate their accounts.
   After the activation process they'll get their token and be able to update their accounts, like the recipes published by the people who got the Role "Admin"
-  and if there is a new recipe published which got the same category with the users' favorite, they'll recieve mail about the new added recipe.
+  and if there is a new recipe published which got the same category with the users' favorite, they'll receive mail about the new added recipe.
   Only people who got the role Admin will have the authorization about simple CRUD methods on recipes. User's can only add recipes to their favorite and use search and filter functions.
 
 ---
@@ -126,7 +126,7 @@
 # <u>RECIPE SERVICE</u>
 
   Recipe Service is the service where users can look for the recipes. 
-  Search with pre-determined searches according to the inredient names,
+  Search with pre-determined searches according to the ingredient names,
   categories and food names. Also, responsible who got the role "ADMIN" can create,
   update and delete new forms of categories and recipes.
 
